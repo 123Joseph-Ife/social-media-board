@@ -1,0 +1,279 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+h1,
+h4 {
+  color: hsl(0, 0%, 100%);
+}
+.green-date {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: hsl(163, 72%, 41%);
+}
+.red-date {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: hsl(356, 69%, 56%);
+}
+body {
+  min-height: 100vh;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  background: linear-gradient(
+    360deg,
+    hsl(230, 17%, 14%) 70%,
+    hsl(232, 19%, 15%) 30%
+  );
+  color: hsl(228, 34%, 66%);
+}
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 150px;
+}
+.text {
+  width: 100%;
+  text-wrap: nowrap;
+}
+.heading {
+  font-size: 1.8rem;
+}
+.toggle {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  text-wrap: nowrap;
+}
+.toggle:hover {
+  color: hsl(0, 0%, 100%);
+}
+#check {
+  display: none;
+}
+.toggle label {
+  display: block;
+  width: 80px;
+  height: 40px;
+  background: linear-gradient(20deg, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 200ms;
+  position: relative;
+}
+.toggle label::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 34px;
+  background-color: hsl(230, 17%, 14%);
+  border-radius: 50%;
+  transition: all 200ms;
+}
+.toggle:has(input:checked) label::after {
+  background-color: hsl(0, 0%, 100%);
+  left: 40px;
+}
+.toggle:has(input:checked) label {
+  background: hsl(230, 22%, 74%);
+}
+.toggle:has(input:checked) label:hover {
+  background: linear-gradient(20deg, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+}
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 20px 150px;
+}
+.card {
+  background-color: hsl(228, 28%, 20%);
+  padding: 30px;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.card:hover,
+.overview:hover {
+  background-color: hsl(228, 28%, 30%);
+}
+.line1,
+.line2,
+.line3,
+.line4 {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.line1 {
+  background: hsl(208, 92%, 53%);
+}
+.line2 {
+  background: hsl(203, 89%, 53%);
+}
+.line3 {
+  background: linear-gradient(20deg, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+}
+.line4 {
+  background: hsl(348, 97%, 39%);
+}
+.card .icon {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+.card .num {
+  font-size: 5rem;
+  margin-top: 30px;
+  /* margin-bottom: 10px; */
+}
+.card .followers {
+  letter-spacing: 6px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.overview-heading {
+  font-size: 2rem;
+  color: hsl(0, 0%, 100%);
+  padding: 0 150px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.overviews {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 20px 150px;
+  gap: 30px;
+}
+.overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+  gap: 20px;
+  background-color: hsl(228, 28%, 20%);
+  padding: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.overview .top,
+.down {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.overview h2 {
+  font-size: 3rem;
+  color: hsl(0, 0%, 100%);
+}
+.overview .red-num,
+.green-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.overview .red-num {
+  color: hsl(356, 69%, 56%);
+}
+.overview .green-num {
+  color: hsl(163, 72%, 41%);
+}
+@media (max-width: 1000px) {
+  header,
+  .cards,
+  .overviews,
+  .overview-heading {
+    padding: 50px;
+  }
+}
+@media (max-width: 800px) {
+  header,
+  .cards,
+  .overviews,
+  .overview-heading {
+    padding: 20px;
+  }
+}
+.card.active,
+.overview.active {
+  background-color: hsl(227, 47%, 96%);
+}
+.card.active:hover,
+.overview.active:hover {
+  background-color: hsl(225, 100%, 98%);
+}
+.heading.active,
+.num.active,
+.overview-num.active {
+  color: hsl(230, 17%, 14%);
+}
+body.active {
+  background: linear-gradient(
+    360deg,
+    hsl(0, 0%, 100%) 70%,
+    hsl(225, 100%, 98%) 30%
+  );
+}
+.overview-heading.active,
+.overview h3.active,
+.followers.active,
+.icon.active,
+.toggle.active,
+.text p.active {
+  color: hsl(228, 12%, 44%);
+}
+.toggle.active:hover {
+  color: ;
+}
+@media (max-width: 600px) {
+  .heading {
+    font-size: 1.3rem;
+  }
+  .text p {
+    font-size: 0.8rem;
+  }
+  header,
+  .cards,
+  .overviews {
+    flex-direction: column;
+  }
+  .text {
+    padding-bottom: 20px;
+    border-bottom: 2px solid hsl(228, 34%, 66%);
+    text-wrap: wrap;
+  }
+  .toggle {
+    justify-content: space-between;
+    text-wrap: wrap;
+    width: 100%;
+  }
+}
